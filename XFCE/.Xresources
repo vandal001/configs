@@ -1,0 +1,15 @@
+xscreensaver-auth.default.*.newLoginCommand: dm-tool switch-to-greeter
+URxvt*background: black
+Rxvt*background: black
+URxvt*.scrollBar: false
+Rxvt*.scrollBar: false
+URxvt*foreground: White
+Rxvt*foreground: White
+! enable native transparency - so that inline image preview is possible with w3mimagedisplay in Ranger
+URxvt*.transparent: true
+URxvt*inheritPixmap: true
+!URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
+URxvt*.shading: 40
+URxvt*borderLess: true
+URxvt*depth: 32
+URxvt*buffered: true

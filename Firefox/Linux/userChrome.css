@@ -1,0 +1,46 @@
+/*#main-window[tabsintitlebar="true"]:not([extradragspace="true"]) #TabsToolbar > .toolbar-items {
+  opacity: 0;
+  pointer-events: none;
+}
+#main-window:not([tabsintitlebar="true"]) #TabsToolbar {
+    visibility: collapse !important;
+}
+
+
+#sidebar-header {
+  display: none;
+}
+*/
+
+
+#tabbrowser-tabs {
+    visibility: collapse;
+}
+#navigator-toolbox {
+    display: flex;
+    flex-flow: row wrap;
+}
+#titlebar {
+    order: 1;
+    max-width: 170px;
+}
+#titlebar #TabsToolbar {
+    background-color: var(--toolbar-bgcolor);
+    background-image: var(--toolbar-bgimage)
+}
+/*#titlebar #TabsToolbar .titlebar-spacer {
+    background-color: rgba(0,0,0,0.05);
+    margin: 3px;
+    border-radius: 25%;
+    cursor: grab;
+}*/
+#titlebar #TabsToolbar .titlebar-spacer[type="pre-tabs"] {
+    display: none;
+}
+#nav-bar {
+    order: 0;
+    width: calc(100% - 170px);
+}
+#PersonalToolbar {
+    order: 2;
+}

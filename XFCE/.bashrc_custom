@@ -1,0 +1,23 @@
+# File: $HOME/.bashrc_custom
+# THIS FILE IS A USER-CUSTOM BASHRC FILE TO KEEP CLEAN THE DEFAULT ~/.barshrc FILE.
+# PUT THERE ANY CUSTOM CODE MANUALLY ADDED BY YOU
+
+# Add a new line at the end of the command prompt
+source /usr/share/git/completion/git-prompt.sh
+#PS1=${PS1}\\n
+PS1=${PS1%?}
+PS1=${PS1%?}\n'$ '
+PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]\h \w\[\033[0;32m\]$(__git_ps1)\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\] ▶\[\033[0m\] '
+alias acti="conda activate my_env"
+alias deacti="conda deactivate"
+alias acti_py3="conda activate my_py3"
+alias deacti_py3="conda deactivate"
+alias cava_xterm="xfce4-terminal --hide-menubar --hide-borders --hide-toolbar --hide-scrollbar -e cava"
+#alias cava_xterm="xfce4-terminal --hide-menubar --hide-toolbar --hide-scrollbar -e cava"
+#source ~/Documents/yaay_fzf_helper.sh
+#alias yay_fzf="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk "{print \$2}")' | xargs -ro  yay -S"
+#export QT_QPA_PLATFORMTHEME=qt5ct
+#source /opt/ros/melodic/setup.bash
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$PATH:$GEM_HOME/bin"
+export PATH="$PATH:/root/.local/share/gem/ruby/3.0.0/bin"

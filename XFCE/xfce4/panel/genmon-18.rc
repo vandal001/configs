@@ -1,0 +1,6 @@
+Command=/home/vandal/Downloads/xfce4-genmon-scripts/cpu-panel.sh
+UseLabel=0
+Text=CPU
+UpdatePeriod=5000
+Font=Noto Sans 10
+

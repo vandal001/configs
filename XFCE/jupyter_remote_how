@@ -1,0 +1,9 @@
+# create a remote jupyter server 
+1) on remote server : 
+	jupyter notebook --no-browser --port=8889
+2) on guest machine :
+	ssh -N -f -L localhost:8889:localhost:8889 user@remotehost
+	ssh -N vipul@130.149.238.189 -R 8889:localhost:22 -o ServerAliveInterval=30
+3) in guest machine browser : 
+	http://localhost:8888/ or 8889
+    insert token from jupter notebook ssh window 

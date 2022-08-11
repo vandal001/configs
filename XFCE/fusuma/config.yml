@@ -1,0 +1,42 @@
+swipe:
+  3:
+    left:
+     # command: "xdotool key ctrl+Page_Up" # History forward 
+      sendkey: "LEFTCTRL+PAGEUP"
+    right:
+     # command: "xdotool key ctrl+Page_Down" # History back
+      sendkey: "LEFTCTRL+PAGEDOWN"
+    up:
+     # command: "xdotool key super" # Activity
+      sendkey: "LEFTMETA+W"
+    down:
+     # command: "xdotool key super" # Activity
+      sendkey: "ESC"
+  4:
+    left:
+     # command: "xdotool key alt+Left" # Switch to next workspace
+      sendkey: "LEFTALT+LEFT"
+    right:
+     # command: "xdotool key alt+Right" # Switch to previous workspace
+      sendkey: "LEFTALT+RIGHT"
+    up:
+     # command: "xdotool key ctrl+alt+Up" # Switch to next workspace
+      sendkey: "LEFTCTRL+LEFTALT+UP"
+    down:
+     # command: "xdotool key ctrl+alt+Down" # Switch to previous workspace
+      sendkey: "LEFTCTRL+LEFTALT+DOWN"
+pinch:
+  2:
+    in:
+     # command: "xdotool keydown ctrl click 4 keyup ctrl" # Zoom in
+      sendkey: "LEFTCTRL+EQUAL" # threshold: 0.5, interval: 0.5
+    out:
+     # command: "xdotool keydown ctrl click 5 keyup ctrl" # Zoom out
+      sendkey: "LEFTCTRL+MINUS"
+
+#threshold:
+#  pinch: 0.5
+
+#interval:
+#  swipe: 0.75
+#  pinch: 0.5

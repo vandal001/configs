@@ -1,0 +1,6 @@
+Command=/home/vandal/Downloads/xfce4-genmon-scripts/memory-panel.sh
+UseLabel=0
+Text=(genmon)
+UpdatePeriod=5000
+Font=Noto Sans 10
+

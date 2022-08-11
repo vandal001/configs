@@ -1,0 +1,6 @@
+cava : xfce4-terminal --hide-menubar --hide-borders --hide-toolbar --hide-scrollbar -e cava
+yay package helper :yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk "{print \$2}")' | xargs -ro  yay -S
+brightness : xrandr --output DP-1 --brightness 0.7
+add file to image: cat file.png addfile >> output.png
+remove file from image: tail -c <size of file in bytes> input_file > output_file
+mpv music : mpv --no-audio-display "`fzf -e -i +s -m`"
