@@ -4,3 +4,12 @@ brightness : xrandr --output DP-1 --brightness 0.7
 add file to image: cat file.png addfile >> output.png
 remove file from image: tail -c <size of file in bytes> input_file > output_file
 mpv music : mpv --no-audio-display "`fzf -e -i +s -m`"
+
+Display off : 
+xrandr to see the displays, then 
+xrandr --output HDMI-0 --off
+xrandr --output DP-1 --off
+When on ssh, do :
+xrandr -display :0.0 
+then :
+xrandr -display :0.0 --output DP-1 --off
