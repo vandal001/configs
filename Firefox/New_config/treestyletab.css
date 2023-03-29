@@ -1,0 +1,273 @@
+/*
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*/
+
+/* tabs */
+
+:root {
+  --tab-dropmarker: white;
+  --throbber-color: white;
+  --throbber-color-active: white;
+  --throbber-shadow-color: rgba(0, 0, 0, 0.45);
+  --tab-like-surface: #9d9d9d;
+  --tab-surface-regular: var(--tab-like-surface);
+  --tab-surface-active: #b3b2b3;
+  --tab-surface-active-pale: #939293;
+  --tab-text-regular: black;
+  --tab-text-inverted: white;
+  --tab-text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+
+  --tab-highlighted-highlight: white;
+  --tab-highlighted-glow: var(--tab-surface-active);
+  --tab-highlighted-base: var(--tab-surface);
+
+  --bg-color: #797979;
+}
+
+tab-item,
+tab-item *,
+tab-item:hover,
+.after-tabs button {
+  color: val(--tab-text);
+}
+
+:root.left tab-item:not(.faviconized),
+:root.left .after-tabs button {
+  border-image: var(--image-tab-l) 10 5 10 10 fill / 10px 5px 10px 10px;
+  padding: 2px 5px 2px 10px;
+}
+
+:root.left tab-item:not(.faviconized).active,
+:root.left .after-tabs button:hover {
+  border-image: var(--image-tab-active-l) 10 5 10 10 fill / 10px 5px 10px 10px;
+}
+
+:root.left tab-item:not(.faviconized).bundled-active {
+  border-image: var(--image-tab-half-active-l) 10 5 10 10 fill / 10px 5px 10px 10px;
+}
+
+:root.right tab-item:not(.faviconized),
+:root.right .after-tabs button {
+  border-image: var(--image-tab-r) 10 10 10 5 fill / 10px 10px 10px 5px;
+  padding: 2px 10px 2px 5px;
+}
+
+:root.right tab-item:not(.faviconized).active,
+:root.right .after-tabs button:hover {
+  border-image: var(--image-tab-active-r) 10 10 10 5 fill / 10px 10px 10px 5px;
+}
+
+:root.right tab-item:not(.faviconized).bundled-active {
+  border-image: var(--image-tab-half-active-r) 10 10 10 5 fill / 10px 10px 10px 5px;
+}
+
+/* macOS workaround */
+:root.platform-mac #tabbar:dir(rtl).overflow tab-item:not(.pinned) {
+  padding-left: var(--scrollbar-placeholder-size); /* it will be enough larger than the default padding */
+}
+:root.platform-mac #tabbar:dir(ltr).overflow tab-item:not(.pinned) {
+  padding-right: var(--scrollbar-placeholder-size); /* it will be enough larger than the default padding */
+}
+
+tab-favicon {
+  background: var(--image-icon-bg) no-repeat bottom;
+  background-size: 100%;
+  padding: 0 3px 3px;
+  position: relative;
+  left: -3px;
+}
+
+tab-item tab-label,
+tab-item .counter {
+  text-shadow: var(--tab-text-shadow);
+}
+
+tab-item tab-label {
+  margin-left: 0.25em;
+}
+
+tab-closebox {
+  background: none transparent;
+  border: 0 none;
+  padding: 5px 3px 7px;
+}
+
+
+/* pinned tabs */
+
+tab-item.faviconized {
+  border: 1px solid #666666;
+  border-radius: 4px;
+  margin: 1px 0 0 1px;
+  padding: 2px 4px 2px 3px;
+}
+
+tab-item.faviconized.unread tab-favicon::before,
+tab-item.attention tab-favicon::before {
+  left: calc(var(--attention-marker-x-offset) + 3px);
+}
+
+tab-item.faviconized.active {
+  background: var(--tab-surface-active);
+}
+
+tab-item.faviconized.bundled-active {
+  background: var(--tab-surface-active-pale);
+}
+
+
+/* tab bar */
+
+:root,
+#background {
+  background: var(--bg-color);
+}
+
+:root.left #background {
+  border-right: 2px solid #444444;
+}
+
+:root.left:not(.overflow) #tabbar {
+  background-image: var(--image-shadow-active-l);
+  background-repeat: repeat-y;
+  background-position: top right;
+}
+
+:root.right #background {
+  border-left: 2px solid #444444;
+}
+
+:root.right:not(.overflow) #tabbar {
+  background-image: var(--image-shadow-active-r);
+  background-repeat: repeat-y;
+  background-position: top left;
+}
+
+
+/* anchor buttons on the new tab button */
+
+:root.left:not(.contextual-identity-selectable)
+  .after-tabs
+  .newtab-action-selector-anchor,
+:root.left
+  .after-tabs .contextual-identities-selector-anchor {
+  border-image: var(--image-tab-r) 10 10 10 5 fill / 10px 0 10px 5px;
+  padding-left: 5px;
+}
+
+:root.left:not(.contextual-identity-selectable)
+  .after-tabs
+  .newtab-action-selector-anchor:hover,
+:root.left
+  .after-tabs .contextual-identities-selector-anchor:hover {
+  border-image: var(--image-tab-active-r) 10 10 10 5 fill / 10px 0 10px 5px;
+}
+
+:root.left.contextual-identity-selectable
+  .after-tabs
+  .newtab-action-selector-anchor {
+  padding-right: 15px;
+}
+
+
+:root.right:not(.contextual-identity-selectable)
+  .after-tabs
+  .newtab-action-selector-anchor,
+:root.right
+  .after-tabs .contextual-identities-selector-anchor {
+  padding-right: 20px;
+}
+
+:root.right.contextual-identity-selectable
+  .after-tabs
+  .newtab-action-selector-anchor {
+  border-image: var(--image-tab-l) 10 5 10 10 fill / 10px 5px 10px 0;
+  padding-right: 10px;
+}
+
+:root.right.contextual-identity-selectable
+  .after-tabs
+  .newtab-action-selector-anchor:hover {
+  border-image: var(--image-tab-active-l) 10 5 10 10 fill / 10px 5px 10px 0;
+}
+
+
+.mutiple-highlighted tab-item:not(.highlighted) {
+  opacity: 0.5;
+}
+
+
+/* hide regular active tab marker */
+.highlighter::before {
+  display: none !important;
+}
+
+/* image data definitions */
+:root {
+  --image-icon-bg: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACGFjVEwAAAAEAAAAAQvKVkYAAADaSURBVEiJ7dRNSwJRGAXgp2hGUcIMoUUSIRmzayME4sqFkPT/f0+bM3AbzCLKIObA2bz3fHAv7ww9evTo0eN/4azg+ScstV8Ob80XYYW64CAsZ1WhL8uPllQJGuESE1xhiusOpzmbRDuKt/qorC2pMU7ADea4xwIPWOIxXGa2iGYezzQZ9aGy9iZjzHCHBk9Y4RlrbDpc52wVbRPvLFntzd4VDfIEtzGsErbFDi/Y4zXcZ7aLZhNPk4xJMv+u6CRPd7JlKMsqDH1/vYeOrHe37Fc/2EOlP/YLegNqoxaPR2dk1wAAABpmY1RMAAAAAAAAABoAAAAaAAAAAAAAAAAAAQPoAQGvkwOwAAAAHmZkQVQAAAABSIntwTEBAAAAwqD1T20ND6AAAODRAAqqAAHckMdJAAAAGmZjVEwAAAACAAAAGgAAABoAAAAAAAAAAAABA+gBAUIF0FkAAAC/ZmRBVAAAAANIie3UwWrCQBgE4K/VplGkVRsQpAZE7fs/Yi8TCLEB2xIPsgNzyc78s7PshoKCgoKCx8PTL/mn4c/h7EZ2+ptCu4A5XlDhFTUWI6yjqeKZ9wJHQ2YxLLDCG9bYYIuPAbdZW0e7irfKrKuwrkmFJd7RYIc9PnFAO+Aha/tom3iXmXXVrGtTZ2dNzC2OOOGMC77CS76domnjaTKj/qnVXYPucnT9VpNehmGzSa93P2zyBzsW+u9f0De+gwtJ94QpXAAAABpmY1RMAAAABAAAABoAAAAaAAAAAAAAAAAAAQPoAQGvz6IjAAAA3GZkQVQAAAAFSInt1EFLw0AUBOCvMbE0EiPioVCplZx6EArGi1Cw/v8f5WUKVVrFohUkA3N5+2Zmd3m7DBgwYMCA/4XRkfyWeYEzlKjC8wPcrpfRFF+FbgPKGExwgQaXaHH1gW3WmvROoi13AveGVKhjcIMpbjHHHRa4DxepzdMzjaaNR7UvbJRd1LjGDB2WeMAKj+jxFPaprdKzjGYWjzqe74KKHLnJzrqIezxjjRds8BpuUlunp4+mi0cTz+JPgk52dScbht2wEmPHj/fYJ+O9G/brD/ZQ6I98QW9lHBOzfu0IkgAAABpmY1RMAAAABgAAABoAAAAaAAAAAAAAAAAAAQPoAQFCWXHKAAAA3mZkQVQAAAAHSInt1E1LAlEYBeCnaEZRwgyhRRIhGbNrIwTiyoWQ9P9/T5szcBvMIsog5sDZvPd8cC/vDD169OjR43/hrOD5Jyy1Xw5vzRdhhbrgICxnVaEvy4+WVAka4RITXGGK6w6nOZtEO4q3+qisLakxTsAN5rjHAg9Y4jFcZraIZh7PNBn1obL2JmPMcIcGT1jhGWtsOlznbBVtE+8sWe3N3hUN8gS3MawStsUOL9jjNdxntotmE0+TjEky/67oJE93smUoyyoMfX+9h46sd7fsVz/YQ6U/9gt6A2qjFo9bliHyAAAAAElFTkSuQmCC");
+  --image-shadow-l: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAHCAYAAADAp4fuAAAAIElEQVQImWNgYGBgZmBg4GNgYJBnYGAwYWBgiGIYUEEAX4IFM/LDwR0AAAAASUVORK5CYII=");
+  --image-shadow-r: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAHCAYAAADAp4fuAAAAIElEQVQImWNgYGCIYmBgMGFgYJBnYGDgY2BgYGYYUEEAjeIFM/R6p3QAAAAASUVORK5CYII=");
+  --image-tab-active-l: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAaCAYAAADSbo4CAAABSElEQVRIie3XsUrDUBTG8X8SqkZBxYJapEIQh2QRHMSCUyE4xcUiqO2apasW7DM4aFc72MUuBsFiLabN5EM46zs4KFgHU4iJi0NyO+TAt/843Hs4B6IlAQqgAvPAErAC5GNOBDEJLADrwA6wBxwCZaASYyKIHFDQNK1aP6s/O47z0bnvDONOEKL4nSjUTmt37Zv2exKAMEQCpoA1XderSQL+gswCW7Zt34qEyEAW2G1eNV9FQhT/kZZ6j71PkZAMP7PiyBt4iSPCkDxQHhdIJYWkkBTyD8hYzBEFWAb2RUNkfwUoNi4bLyIhEjADbJimedF96AqDAEwAq6qqHvTdvlCIDMwBm5ZlnbtP7leSnQlCJL8ri8C2YRgnrevWmzfwhkmEUI0W6CygA0WgBBwT7wb/a4sPYjLAtP+Tcgi4a4KY0aGl+LBY8w0u5p6RGIHpcwAAAABJRU5ErkJggg==");
+  --image-tab-active-r: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAaCAYAAADSbo4CAAABUUlEQVRIie2XsUrDUBSGPw1Vo6BSQS2iEMQhWQQHUXAqBKe4KILarFm6asE+g4N2tYNd7GIQLI3FtJl8CGd9BwcF49DbiiSLQ3IdcuHfP8459z//AVhOWEvAAjALqIACjBDz7ARVAo6APWAHWAPywHgEpvXQCpOW67of1fPqs6ZpZWAbKERg0gAZqHnbfK+cVe4FTF60KX2QgXRdLwOrwMSwKjJAHMe5AzaBaakg9ev6K7ALzAGj0kA6j51P4EAMrSINJOgFIXAsPCYnG6QkDE86iJ2BZCAZyB9B/o2P7AOLUp21dlV7AYoiCsjZNV7bC03TvATWgSlp27frd0NVVQ+BFWAs9WDktb3Qf/K/LMu6ADaAmWFbAIJeEKahxk3jzTCMU2ALmBfV+BWgk0zxNnBCP3sUAZ1+GIqmeNK5awrih0wK34i9a3IpSOHnsIqF+AZhDJ6R+/g3FQAAAABJRU5ErkJggg==");
+  --image-tab-half-active-l: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAaCAYAAADSbo4CAAACF0lEQVRIicXXX2vTUBzG8afd1G5zYi2iIoyBOGzfRvFVCFvfRi+87m57KW0yzL/mnN9Juq5J272NvQIvBV/Ack4qeJEGa1PLhB574EsCycWH5ORwAqwfJQD7AJ4AOATwFMCx5gpjD0AFQBXAWwDvAHwAUAfQ0FgBcQSg2ul0Ti87l3ecczkMh+k2C4MwJU5z5rO567hz0zB/rr6OCoBq70uv69jO/bYBD4XsA3jebrcbugAPhTwG8LrX633eJaQE4ADAqWmYP3YNOQJwNr4Zb31y/gukjGytqN/ObtMwDNMwCLNjfr7apmur9yzfuzgSUeoP/NR13PmVeTVfhhwDqM+mMxWIQHvEM4jjOGshjf8BESR+Q+wdQzjjagFJ10Kmk6kSQuiNhGKMKc/z1GYICa0RkWI+U567ATKJJ1KQ0BpxkjnEtmxlmmYREkexJCK9cZKccem5nrIsSxl9Iy2sI3EUS+KkPcZYBvn6JyRfWd9HUaQdwTmXzGfScz25DlIBcNLtdr8JEonOiFPyNwgAPALw8vzT+UUYhAkR6SuDJJ7rSduypdE31DJkD8CzWq1WH9+ME+KktU2QErLN8qtWq9UaXY/ugyDQguCcJ77vJ67rSsuyCpD8qRwCeNNsNj/2+/3vcRQnOhqNRnIYDiVxUgNvkK5CcswBgBcATgCcQf8OvrCLz0d5MXkryD7rnfzXLI/SorLufgGQ3k0BdvjnWwAAAABJRU5ErkJggg==");
+  --image-tab-half-active-r: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAaCAYAAADSbo4CAAACGklEQVRIicXXS27TQBwG8C+FUqAtAiIECAlVQlQ014g4BVLJNbJgnW6zRLFd4Vc88x9P6ubZa/QELJE4QD1jI7Gw8yJpVkwy0idvLOsne2b8DQAcG84RgKcADgA8BFDBPaNmMGcAPgH4AOAdgBcAHgN4sKJwbOdP4Ac5i1hOnHIZy6wne/81nHN10bq4bbVaJyXmcAWzDcg0vuffdb532gtvprITyDTNZrMG4Hk5Z3YH6XQ63wC8AfBopxDHdn4DOAHwZPZ5dgHpX/cVgNNy0haQS+cyD/wgj7pRRkSZjGUmpZxfFxNvyKZ75PIzbyY3Wbm0jwDszSC+7xcQTlksYm06k/FEl5DjZYg3hwgS24LU1kGyqBtlnHG9c0gYhpoxpgUJLYTZjEfjDZAg1CximogKjMGshTiOk3uup2cQTkqQMJrRcKRWILZlZ67r6jAINWdcESdFZDbDwfAeyI8CwhgrIIZTQpb3kQWIYhFTnHPjkMFgoAB8XNpZ/4UQp1SQMJp2u/0TwPulKmBbtvZcT5WQlDilROYiY5mefzn/CuAVgP3Z33ctxGD61/20Wq2eAXiGxZZmW7Z2XVcFQaCiKEo550YAcRynyVVy12g0GgBeoyjT84bWDbsZcdI92VNJkqjhYJiaiGVZv+r1+mcAb1G0+pUCbbLFT5v8aTk5X6IoQ6stHts51xyWK2Qf031jzdjbQirYcLACgL8NhE0B9J9ItQAAAABJRU5ErkJggg==");
+  --image-tab-l: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAaCAYAAADSbo4CAAAC7ElEQVRIicWX6U4TURTH/ywqiBiRGDUmhMRIhNcgPoWBtqElvECBttRSloylu+3czp3pbB0rUp7AN/Cbr6F0m6VFP/qhLRnaQtAw4SS/nLucSX7J3Lk5AwyPEQDjAB4AeAjgEYBphxmIMQATAGYAvALwGsBbAIsAlhxkQGIKwAzDMPOU0nJJLTU1TWvdJqqqtiil7XQq3Y7uRs83Njb+9L+OCQAzAhWyJbX067YFbioyDuBJIBBYckrgpiL3AbwQBCF8lyIjACYBzJc/l3/ctcgUgIXTyumtH85/ERlF565YrFQqlqZpllbSOrk37ue6vf4ae62mWaqiWpTSVjKRbO1Gdtvr6+u/7SLTABYrJxVTVVVHkWXZLBQKViKRaEUikaEiSydfT0xFVkxFUTq5N7Zz1Zp8RU3fWBIlk7DESsQTrciHSNvn8w2KHH85NhRFMRRZ6WQHkCTJIISY8XjcCofDLZ/Pdz5MRJckyVGKxaKez+eNo6MjMxwOW16vtz0gUi6XdVEUb5fi5bkgCHruU86IxWLmTmhnuIhW0pqiKDqKIAjNXC6nMwxjBINBc21tbahIQxAER6GUNrLZbJNhGD0YDBoej6c1cI+U1FKD53lH4TiukclkmgzD6IFA4JJI72Z9I8tynae8o3AFrp7NZBuHB4fN7e1tw+PyWP0twFwqlfrGFbjaf8NdkW37hJBaOpWuHx4cNra2tnSXy3UhAgD3ADxbfb/qopRWOY5zDEJINZ1O1/b39+ubm5tNl8tl2kXGADyenZ1dFHihWiCFyxS6EFsmV8zt9UOeYfNsNZVI1fb29up+v39AZASdZvm52+128zz/kxByxrLs9eRvuGbby+VyZ8lkshqNRut+v7+xsrJioC/G0OnaXy4vL79jWfa7Iis1RVZqsiwPR7LlLhf1Ul9dF7Eo1vL5fD32MdYIhUK61+u1+kV6MpMAngKYA7AA5zv4gS6+F6PdwzuBzmd9J/819hjpMuo0fwFa47SAEkV27gAAAABJRU5ErkJggg==");
+  --image-tab-r: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAaCAYAAADSbo4CAAADAUlEQVRIicWX+07TUBzHv6B4A4xKjBoTQ2IkymsQn8JAtzAILzBggznGJXWwC3Pr5bTrbXUg4wl8A//zNZRdurYb+Kd/rIyyjv1hKDT55JzT82vySXt6+i0AjPvMGIBHAO4DuAtgCFcc0z7yAcB7AG8BvAbwFMADAHc8FktLS38TG4nTbCbbJoS0NU1r6bp+rZS0kkEIKdM0PenIjHpkbkLEJfRHJGLOdWeGbkXknEgkMg3gibNmbk9EFMUYgJcA7t2qSPlb+ReASQAPu4/nNkSOK8cGgCln0XZEFhcXzzbiG+10Kt0ihLQ0VbN1Xbf1kt5p3ZQGMKjGPafrdqVSsZ1XewzAcFckHo+3U6lUi+M4W1EUS9M0X6kcVSxHZLwrsrCwcBb/HG+n9lItlmFtWZItVVEtVXUY1HeP+9X0q1VU6+j7keVseJdETmOxWGtvb89mWdaSZdlUVdUflE57eHBoekRCoVA7FovZu7u7VqFQMIvFYlOWZV85PDhs9hVZX1u3k8mklf+aN0VRbEqSdEFRujy+Bsrlsldkfn6+HY1GLZqmzXw+3xRF0ZAkyVf0km54RILBYCsajZo0TTdzuZxBCGmIougreklv9BWJRCImTdPN/f19g+f5hiAIvlLSSg3PPhKkgvbq6qq5s71j5PZzDZ7j6wIRfEVRlDqAd5d2Voqi7JWVlebO9k4jm8nWWZat8Txf4zkX/BXtf5LJZH4AeHMpClAUZS0vLxtbW1v1bDZbY1m2yvO8bxBCqnOf5igAzwGMdL++FEVZ4XDY2NzcrGdSmRpTYKocy3XgXC3nGrvpPdd7TU+9KIjViYmJDwAew53SZmdnzXA43EgkEvV0Ol3N5/MnTIE5YZgr6Dc3qN6BZdkTQRB+BwKBAIAX6ITpi4QWCoXstbW1ZvJLslEoFOpSUaopsnKB4uD0VUX1zrvrelAVtaYqao1hmJ8zMzMfAbxCJ9V7ArSfKf48yU85i/MZOmHIm+JxM/81o84bMoLzfaPPMXwDDGHAjxUA/AOEHrSAe0+SzAAAAABJRU5ErkJggg==");
+}
+
+tab-item.unread .label-content {
+  font-style: italic;
+}
+
+tab-item:not(.pinned) tab-item-substance {
+  padding-left: 0px !important; /* !important is required when there are enough tabs to cause a scrollbar */
+}
+
+tab-item {
+  --tab-size: 30px !important;
+}
+tab-item  tab-item-substance {
+  height: var(--tab-size);
+}
+
+tab-item.active tab-item-substance {
+  height: 39px !important;
+}
+tab-item.active .background {
+  background-color: steelblue;
+}
+tab-item.active .label-content {
+  font-weight: bold;
+  font-size: 14px;
+}
+tab-item.active tab-twisty,
+tab-item.active .label-content,
+tab-item.active tab-counter {
+  color: #fff;
+}
+
+/* "#tabbar" is required for TST 3.4.0 and later! */
+#tabbar tab-item tab-item-substance:not(:hover) tab-closebox {
+  display: none;
+}
+
+tab-closebox::after {
+  /*
+    There are some possible characters for this purpose:
+    https://en.wikipedia.org/wiki/X_mark
+    - ❌ : U+274C CROSS MARK
+      * Colored on macOS
+    - ❎ : U+274E NEGATIVE SQUARED CROSS MARK
+
+    So ⨉ (U+2A09) looks good for me on Windows, macOS, and Linux (tested on Ubuntu).
+  */
+  content: "❌";
+
+  background: none;
+  line-height: 1;
+  mask: none;
+  text-align: center;
+  width: 1.25em;
+}
