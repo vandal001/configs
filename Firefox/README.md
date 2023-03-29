@@ -36,3 +36,11 @@ Titlebar not visible *(Hamburger menu at top-right -> `More Tools` -> `Customize
 
 [Source](https://superuser.com/questions/1424478/can-i-hide-native-tabs-at-the-top-of-firefox) and [medium](https://medium.com/@Aenon/firefox-hide-native-tabs-and-titlebar-f0b00bdbb88b)
 
+
+
+### Add support for bypassing paywalls
+
+- Go to https://gitlab.com/magnolia1234/bypass-paywalls-clean-filters and add filters in uBlock and Tampermonkey.
+
+### Add youtube age restriction bypass
+- Go to https://github.com/zerodytrash/Simple-YouTube-Age-Restriction-Bypass and add the Tampermonkey script.
