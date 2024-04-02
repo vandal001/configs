@@ -4,6 +4,8 @@ brightness : xrandr --output DP-1 --brightness 0.7
 add file to image: cat file.png addfile >> output.png
 remove file from image: tail -c <size of file in bytes> input_file > output_file
 mpv music : mpv --no-audio-display "`fzf -e -i +s -m`"
+alias aptinstall=`apt-cache search "" | sort | cut --delimiter " " --fields 1 | fzf --multi --exact --cycle --reverse --preview "apt 2>/dev/null show {1}" | cut --delimiter " " --fields 1 | xargs -r sudo apt install`
+alias aptremove=`apt 2>/dev/null list | sort | cut --delimiter "/" --fields 1 | fzf --multi --exact --cycle --reverse --preview "apt 2>/dev/null show {1}" | cut --delimiter " " --fields 1 | xargs -r sudo apt remove -y`
 
 Display off : 
 xrandr to see the displays, then 

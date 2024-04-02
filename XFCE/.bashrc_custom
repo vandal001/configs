@@ -3,7 +3,8 @@
 # PUT THERE ANY CUSTOM CODE MANUALLY ADDED BY YOU
 
 # Add a new line at the end of the command prompt
-source /usr/share/git/completion/git-prompt.sh
+#source /usr/share/git/completion/git-prompt.sh
+source /usr/lib/git-core/git-sh-prompt
 #PS1=${PS1}\\n
 PS1=${PS1%?}
 PS1=${PS1%?}\n'$ '
@@ -13,8 +14,15 @@ alias deacti="conda deactivate"
 alias acti_py3="conda activate my_py3"
 alias deacti_py3="conda deactivate"
 alias cava_xterm="xfce4-terminal --hide-menubar --hide-borders --hide-toolbar --hide-scrollbar -e cava"
+#alias aptinstall='apt-cache search "" | sort | cut --delimiter " " --fields 1 | fzf --multi --exact --cycle --preview "apt 2>/dev/null show {1}" | cut --delimiter " " --fields 1 | xargs -r sudo apt install'
+#alias aptremove='apt 2>/dev/null list | sort | cut --delimiter "/" --fields 1 | fzf --multi --exact --cycle --preview "apt 2>/dev/null show {1}" | cut --delimiter " " --fields 1 | xargs -r sudo apt remove'
+#alias aptremove='dpkg -l | awk "NR > 5" | awk "{print \$2}" | fzf --exact --multi --sort --info=inline --border --preview " dpkg -s {} " "$( if (( $(tput cols) >= 125 )); then echo "--preview-window=right:55%:wrap"; else echo "--preview-window=bottom:60%:wrap"; fi )" | xargs -r sudo apt remove'
+alias aptinstall='apt-cache search "" | sort | cut --delimiter " " --fields 1 | fzf --multi --exact --cycle --border --preview "apt 2>/dev/null show {1}" "$( if (( $(tput cols) >= 125 )); then echo "--preview-window=right:55%:wrap"; else echo "--preview-window=bottom:60%:wrap"; fi )" | cut --delimiter " " --fields 1 | xargs -r sudo apt install'
+alias aptremove='dpkg-query --show --showformat="\${Installed-Size}\t\${Package}\n" | sort -rh | awk "{print \$1/1024 \" MB\", \$2}" | fzf --exact --multi --cycle --border --preview " dpkg -s {3}" "$( if (( $(tput cols) >= 125 )); then echo "--preview-window=right:55%:wrap"; else echo "--preview-window=bottom:60%:wrap"; fi )" | awk "{print \$3}" | xargs -r sudo apt remove'
 #alias cava_xterm="xfce4-terminal --hide-menubar --hide-toolbar --hide-scrollbar -e cava"
 #source ~/Documents/yaay_fzf_helper.sh
+#source ~/Documents/pkgsearch
+#source ~/Documents/pkg_installed.sh
 #alias yay_fzf="yay -Slq | fzf -m --preview 'cat <(yay -Si {1}) <(yay -Fl {1} | awk "{print \$2}")' | xargs -ro  yay -S"
 #export QT_QPA_PLATFORMTHEME=qt5ct
 #source /opt/ros/melodic/setup.bash
