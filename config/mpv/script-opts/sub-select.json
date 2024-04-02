@@ -1,0 +1,15 @@
+[
+    {
+        "alang": "*",
+        "slang": "eng?",
+        "whitelist": ["sdh"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": ["cc"]
+    },
+    {
+        "inherit": "^",
+        "whitelist": [ ]
+    }
+]

@@ -1,0 +1,14 @@
+undershoot.top, undershoot.right, undershoot.bottom, undershoot.left { background-image: none; }
+
+#guake-terminal {
+  font-size: 10px;
+}
+
+
+#guake-terminal header tabs tab {
+    padding: 0 2px 0 2px;
+    margin: 0 0 0 0;
+}
+
+
+
